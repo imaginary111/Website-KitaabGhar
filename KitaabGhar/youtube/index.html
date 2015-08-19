@@ -1,0 +1,74 @@
+<!DOCTYPE html><html class=''>
+<head><meta charset='UTF-8'><meta name="robots" content="noindex">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='normalize.css'><script src='prefixfree.min.js'></script><script src='modernizr.js'></script>
+<link rel="stylesheet" href="youtube-style.css"></head><body>
+<style type="text/css">
+.blurred {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+</style>
+<div class="container">
+			  <header class="clearfix">
+				    <h1>YouTube Menu Effect <span>A menu as seen on YouTube</span></h1>	
+			  </header>
+			  <div class="main">
+				    <div id="blur">
+				    <p>This menu is inspired by the left side menu found on YouTube. When clicking on the menu label and icon, the main menu appears beneath and the menu icon slides to the right side while the label slides up. To close the menu, the menu icon needs to be clicked again.</p>
+				    </div>
+				    <div class="side">
+					      <nav class="dr-menu">
+						        <div class="dr-trigger">
+          <span class="dr-icon dr-icon-menu"></span>
+          <a class="dr-label">Account</a>
+        </div>
+						        <ul>
+							          <li><a class="dr-icon dr-icon-user" href="#">Roswell Parian</a></li>
+							          <li><a class="dr-icon dr-icon-camera" href="#">Videos</a></li>
+							          <li><a class="dr-icon dr-icon-heart" href="#">Favorites</a></li>
+							          <li><a class="dr-icon dr-icon-bullhorn" href="#">Subscriptions</a></li>
+							          <li><a class="dr-icon dr-icon-download" href="#">Downloads</a></li>
+							          <li><a class="dr-icon dr-icon-settings" href="#">Settings</a></li>
+							          <li><a class="dr-icon dr-icon-switch" href="#">Logout</a></li>
+						        </ul>
+					      </nav>
+				    </div>
+			  </div>
+		</div>
+<footer>
+  <p>
+    <strong>Re-Made 
+      <a href="https://twitter.com/roswellparian" target="_blank">@roswellparian</a> by Parian
+    </strong>
+  </p>
+</footer>
+<script src='jquery/jquery-1.11.2.min.js'></script>
+<script>
+var YTMenu = function () {
+    function init() {
+        [].slice.call(document.querySelectorAll('.dr-menu')).forEach(function (el, i) {
+            var trigger = el.querySelector('div.dr-trigger'), icon = trigger.querySelector('span.dr-icon-menu'), open = false;
+            trigger.addEventListener('click', function (event) {
+                if (!open) {
+                    el.className += ' dr-menu-open';
+                    open = true;
+                    document.getElementById("blur").className = "blurred";
+                }
+            }, false);
+            icon.addEventListener('click', function (event) {
+                if (open) {
+                    event.stopPropagation();
+                    open = false;
+                    document.getElementById("blur").className = "";
+                    el.className = el.className.replace(/\bdr-menu-open\b/, '');
+                    return false;
+                }
+            }, false);
+        });
+    }
+
+    init();
+}();
+</script>
+</body></html>
